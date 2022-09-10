@@ -1,4 +1,4 @@
-name = "gitq"
+name = "arcboot"
 author = "Jason Qin"
-description = "Git Q, the better git frontend"
+description = "Arcboot"
 license = "LICENSE"

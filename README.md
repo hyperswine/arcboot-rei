@@ -1,2 +1,3 @@
-# arcboot-rei
-arcboot in rei
+# Arcboot
+
+Arcboot in rei
