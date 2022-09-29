@@ -1,12 +1,12 @@
 @cfg(target_arch = "aarch64") {
 
-fn set_entry_interrupt_handler(vector_table_addr: u64, handler_addr: u64) {
+set_entry_interrupt_handler: (vector_table_addr: u64, handler_addr: u64) {
     unsafe {
         write(addr=vector_table_addr, handler_addr)
     }
 }
 
-fn get_interrupt_table() -> Address {
+get_interrupt_table: () -> Address {
     VTABLE.get()
 }
 
@@ -14,10 +14,10 @@ const MAX_KTHREADS = 512
 
 mut SP_ARRAY = Mutex([Address; MAX_KTHREADS])
 
-type GenericInterruptHandler = fn()
+GenericInterruptHandler: () -> ()
 
 # The first handler
-fn entry_interrupt_handler(interrupt_code: u64) {
+entry_interrupt_handler: (interrupt_code: u64) {
     // save state, all regs. Dont care about anything else, could be cached or whatever or write through (usually the kernel stack is write back)
 
     // save userspace sp

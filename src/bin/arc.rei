@@ -1,6 +1,14 @@
 @!cfg(feature="arc")
 
-fn main() -> ! {
+// in core, you can directly tamper with _init:
+@no_mangle
+_init: () -> ! {
+    main()
+
+    loop {}
+}
+
+main: () -> Status {
     info("Launched into arc!")
 
     @cfg(target_arch = "riscv64")

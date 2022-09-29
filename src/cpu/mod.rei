@@ -1,22 +1,21 @@
 # A generic processing element
 @derive(Clone, Copy)
-system Cpu {
-    clock: data {
+Cpu: complex {
+    clock: {
         min_freq: f32
         max_freq: f32
-
         curr_freq: f32
     }
 
-    # all fn signatures with new(...) -> Self is sugared into Self(...)
+    # all signatures with new(...) -> Self is sugared into Self(...)
     # syntax sugared into ::new() by IDE
-    fn new(min_freq: f32, max_freq: f32) -> Self {
+    new: (min_freq: f32, max_freq: f32) -> Self {
         Self {
             clock: { min_freq, max_freq, 0 }
         }
     }
 
-    fn set_freq(&mut self, new_freq: f32) {
+    set_freq: (&mut self, new_freq: f32) {
         self.clock.curr_freq = new_freq
     }
 }
@@ -25,7 +24,7 @@ system Cpu {
 system ProcessorComplex<const N> {
     cores: [Cpu; N]
 
-    fn new(cpus: &[Cpu]) -> Self {
+    new: (cpus: &[Cpu]) -> Self {
         Self {
             cores: cpus
         }
@@ -33,6 +32,6 @@ system ProcessorComplex<const N> {
 }
 
 # Adjust the freq of a cpu core or processing element
-fn adjust_freq(cpu: Cpu, new_freq: f32) {
+adjust_freq: (cpu: Cpu, new_freq: f32) {
     cpu.set_freq(new_freq)
 }

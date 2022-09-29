@@ -2,6 +2,8 @@
     Arc Memory Regions
 *#
 
-enum MemoryRegion {
-    Standard, MemoryMappedIO, DirectMemoryAccess
+MemoryRegion: enum {
+    Standard
+    MemoryMappedIO
+    DirectMemoryAccess
 }

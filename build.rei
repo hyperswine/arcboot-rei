@@ -1,13 +1,12 @@
-require {
+require = {
     core = { version = "0.1", features = ["log"] }
 }
 
-// reid allows you to switch between target views => ctrl shift p -> switch target
-targets {
-    aarch64_uefi = {
-        
+// rein allows you to switch between target views => ctrl shift p -> switch target
+target = {
+    phantasm_ir = {
+        default_target = true
     }
-    riscv64_none = {
-        
-    }
+    aarch64_uefi = {}
+    riscv64_none = {}
 }

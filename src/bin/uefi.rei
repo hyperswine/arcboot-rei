@@ -3,7 +3,7 @@
 use uefi::common::*
 
 @entry
-fn main() -> ! {
+main: () -> Status {
     let bt = BootServices::get_table()
 
     info("Boot services started!")
@@ -14,3 +14,11 @@ fn main() -> ! {
 
     rt.exit()
 }
+
+/*
+entry: annotation () {
+    (f: Fn) => {
+        basically, no_mangle and call this label from uefi
+    }
+}
+*/
