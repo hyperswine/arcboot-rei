@@ -1,5 +1,7 @@
 # Arcboot
 
+![Arcboot](/Arcboot.png)
+
 Arcboot in Rei.
 
 ## Rei VM
