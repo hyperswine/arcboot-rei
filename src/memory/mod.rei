@@ -52,3 +52,43 @@ Stack: complex {
         write_sp(sp + sizeof(t))
     }
 }
+
+Block: [u8; 4096]
+
+// DMA a block of memory ( does not implement data link layer protocols)
+// Pad the rest of the memory
+
+Dma: enum u64 => Read | Write
+
+DmaArea: {
+    action_start_addr: u64
+    action_addr: u64
+
+    // allow device to fetch the memory directly
+    dma_to: (&mut self, blocks: &[Block]) {
+        blocks.for_each(b => {
+            (self.action_start_addr as *const u64).write(&b)
+            (self.action_addr as *const u64).write(Dma::Read)
+        })
+    }
+}
+
+// hmm I dont know actually anymore...
+// maybe arcboot for wrapping other stuff like limine and coreboot and etc...
+// and responsible for setting up a "proper" supervisor environment
+// for the riscv arch
+
+// while arcboot exposes a few kernel independent "H mode" functions
+// just in case
+// and for arcvisor
+
+// the kernel shouldnt know about architectures
+// it should be using abstractions
+// arcboot should be defining abstractions, not using them
+// and wrap around all Von Neumann platform dependent features...
+
+// neutron should also start spx:system
+// and intercept interrupts in S-Mode
+// and other faults
+
+// arcboot simply makes doing that easier
