@@ -10,3 +10,14 @@ target = {
     aarch64_uefi = {}
     riscv64_none = {}
 }
+
+bin = {
+    default = "arc"
+}
+
+// a project can define multiple library targets
+// if you do, you have to assign direct submodules @!lib = "lib-name"
+// its best to just have a single lib target and/or a few bin targets
+lib = {
+    default = "lib"
+}
