@@ -92,3 +92,6 @@ DmaArea: {
 // and other faults
 
 // arcboot simply makes doing that easier
+
+// make cpu aware of RAM page size (4K) and the ability to swap to and from disk
+setup_paging: () {}
